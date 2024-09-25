@@ -11,7 +11,7 @@ function Hero() {
         <br></br> near you...
       </h2>
       <h2 className="text-xl text-gray-400">
-        Explore best home services & Repair near you
+        Search for reliable HVAC technicians to keep your home comfortable.
       </h2>
       <div className="mt-4 flex gap-4 items-center">
         <Input placeholder="Search" className="rounded-full md:w-[350px]" />

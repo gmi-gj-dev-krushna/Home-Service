@@ -1,3 +1,6 @@
+"use client";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./_components/Header";
@@ -14,25 +17,59 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata = {
-  title: "GMI Home Services",
-  description: "Find Home Service/Repair near you...",
-  icons: {
-    icon: ["/icon.jpg"],
-  },
-};
-
 export default function RootLayout({ children }) {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000); // Adjust this value to control the loading duration
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextAuthSessionProvider>
-          <div className="mx-6 md:mx16">
-            <Header />
-            {children}
-          </div>
+          {loading ? (
+            <div className="flex flex-col items-center justify-center h-screen bg-[#2929FF]">
+              <div className="mb-8">
+                <Image
+                  src="/icon.jpg" // Replace with your actual logo path
+                  alt="Logo"
+                  width={150}
+                  height={150}
+                />
+              </div>
+              <div className="flex space-x-2">
+                <div className="w-3 h-3 bg-white rounded-full animate-bounce"></div>
+                <div
+                  className="w-3 h-3 bg-white rounded-full animate-bounce"
+                  style={{ animationDelay: "0.2s" }}
+                ></div>
+                <div
+                  className="w-3 h-3 bg-white rounded-full animate-bounce"
+                  style={{ animationDelay: "0.4s" }}
+                ></div>
+                <div
+                  className="w-3 h-3 bg-white rounded-full animate-bounce"
+                  style={{ animationDelay: "0.6s" }}
+                ></div>
+                <div
+                  className="w-3 h-3 bg-white rounded-full animate-bounce"
+                  style={{ animationDelay: "0.8s" }}
+                ></div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <Header />
+              <div className="mx-6 md:mx16">{children}</div>
+            </div>
+          )}
         </NextAuthSessionProvider>
       </body>
     </html>
