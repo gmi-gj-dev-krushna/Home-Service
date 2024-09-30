@@ -32,7 +32,7 @@ function CategorySideBar() {
 
   return (
     <div>
-        <h2 className='font-bold mb-3 text-lg text-primary'>Categories</h2>
+        <h2 className='font-bold mb-3 text-lg text-[]'>Categories</h2>
         <div>
             {categoryList.map((category,index)=>(
                 <Link href={'/category/'+category.name} 
@@ -42,10 +42,10 @@ function CategorySideBar() {
                 hover:bg-purple-50
                 hover:shadow-md
                 items-center
-                hover:text-primary
-                 hover:border-primary
+                hover:text-[#2929FF]
+                 hover:border-[#2929FF]
                  ${selectedCategory==category.name&&
-                  'border-primary text-primary shadow-md bg-purple-50'}
+                  'border- text-[#2929FF] shadow-md bg-purple-50'}
                  `}>
                     <Image src={category.icon.url}
                     alt='icon'

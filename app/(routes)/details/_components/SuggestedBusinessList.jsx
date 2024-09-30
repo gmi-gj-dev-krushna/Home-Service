@@ -31,8 +31,8 @@ function SuggestedBusinessList({business}) {
   return (
     <div className='md:pl-10'>
       <BookingSection business={business}>
-        <Button className="flex gap-2 w-full">
-          <NotebookPen/>
+        <Button className="flex gap-2 w-full text-white">
+          <NotebookPen className='text-white'/>
           Book Appointment  
         </Button> 
       </BookingSection>
@@ -40,7 +40,7 @@ function SuggestedBusinessList({business}) {
         <h2 className='font-bold text-lg mt-3 mb-3'>Similar Business</h2>
         <div className=''>
           {businessList && businessList.map((business, index) => (
-            <Link href={'/details/'+business.id} key={index} className="flex gap-2 mb-4 hover:border rounded-lg p-2 cursor-pointer hover:shadow-md border-primary">
+            <Link href={'/details/'+business.id} key={index} className="flex gap-2 mb-4 hover:border rounded-lg p-2 cursor-pointer hover:shadow-md border-[#2929FF]">
               <Image 
                 src={business?.images[0].url}
                 alt={business.name}
@@ -50,7 +50,7 @@ function SuggestedBusinessList({business}) {
               />
               <div className=''>
                 <h2 className='font-bold'>{business.name}</h2>
-                <h2 className='text-primary'>{business.contactPerson}</h2>
+                <h2 className='text-[#2929FF]'>{business.contactPerson}</h2>
                 <h2 className='text-gray-400'>{business.address}</h2>
               </div>
             </Link>

@@ -18,7 +18,7 @@ function BusinessList({ businessList, title, skeletonCount = 8 }) {
                 key={business.id}
                 className="shadow-md 
                 rounded-lg hover:shadow-lg cursor-pointer
-                 hover:shadow-primary
+                 hover:shadow-[#2929FF]
                  hover:scale-105 transition-all ease-in-out"
                 aria-label={`View details for ${business.name}`}
               >
@@ -40,15 +40,15 @@ function BusinessList({ businessList, title, skeletonCount = 8 }) {
                 >
                   <h2
                     className="p-1 bg-purple-200
-                        text-primary rounded-full px-2
+                        text-[#2929FF] rounded-full px-2
                          text-[12px]"
                   >
                     {business.category.name}
                   </h2>
                   <h2 className="font-bold text-lg">{business.name}</h2>
-                  <h2 className="text-primary">{business.contactPerson}</h2>
+                  <h2 className="text-[#2929FF]">{business.contactPerson}</h2>
                   <h2 className="text-gray-500 text-sm">{business.address}</h2>
-                  <Button className="rounded-lg mt-3 bg-blue-600 hover:bg-gray-100 hover:text-black">
+                  <Button className="rounded-lg mt-3 bg-[#2929FF] text-white hover:bg-gray-100 hover:text-black">
                     Book Now
                   </Button>
                 </div>

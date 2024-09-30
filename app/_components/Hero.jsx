@@ -15,7 +15,7 @@ function Hero() {
       </h2>
       <div className="mt-4 flex gap-4 items-center">
         <Input placeholder="Search" className="rounded-full md:w-[350px]" />
-        <Button className="bg-blue-600 rounded-full h-[40px] hover:bg-gray-200 hover:text-black">
+        <Button className="bg-[#2929FF] rounded-full h-[40px] text-white hover:bg-gray-200 hover:text-black">
           <Search className="h-4 w-4" />
         </Button>
       </div>

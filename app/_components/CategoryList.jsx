@@ -15,7 +15,7 @@ function CategoryList({ categoryList }) {
                   width={35}
                   height={35}
                 />
-                <h2 className="text-primary">{category.name}</h2>
+                <h2 className="text-[#2929FF]">{category.name}</h2>
               </div>
             </Link>
           ))

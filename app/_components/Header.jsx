@@ -84,7 +84,7 @@ function Header() {
                   onError={handleImageError}
                 />
               ) : (
-                <Button className="rounded-full p-0 w-10 h-10">
+                <Button className="rounded-full p-0 w-10 h-10 bg-white hover:bg-white hover:scale-105">
                   <User className="h-4 w-4" />
                 </Button>
               )}
@@ -102,7 +102,7 @@ function Header() {
           </DropdownMenu>
         ) : (
           <Button
-            className="bg-blue-600 hover:bg-gray-100 hover:text-black mr-6"
+            className="bg- hover:bg-gray-100 hover:text-black mr-6"
             onClick={() => signIn("descope")}
           >
             Login / Sign Up

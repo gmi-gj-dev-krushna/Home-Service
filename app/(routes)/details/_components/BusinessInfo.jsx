@@ -15,7 +15,7 @@ function BusinessInfo({business}) {
       />
       <div className='flex justify-between items-center w-full'>
       <div className='flex flex-col mt-4 md:mt-0 items-baseline gap-3'>
-        <h2 className='text-primary p-1 px-3
+        <h2 className='text-[#2929FF] p-1 px-3
         text-lg 
         bg-purple-100 rounded-full'>{business?.category?.name}</h2>
         <h2 className='text-[40px] font-bold'>{business.name}</h2>
@@ -25,8 +25,8 @@ function BusinessInfo({business}) {
         {business?.email}</h2>
       </div>
       <div className='flex flex-col gap-5 items-end'>
-        <Button><Share/></Button>
-        <h2 className='flex gap-2 text-xl text-primary'><User/> {business.contactPerson} </h2>
+        <Button><Share className='text-white'/></Button>
+        <h2 className='flex gap-2 text-xl text-[#2929FF]'><User/> {business.contactPerson} </h2>
         <h2 className='flex gap-2 text-xl text-gray-500'><Clock/> Available 8:00 AM to 10:PM </h2>
       
       </div>

@@ -106,9 +106,9 @@ function BookingSection({ children, business }) {
                     disabled={isSlotBooked(item.time)}
                     variant="outline"
                     className={`border rounded-full 
-                p-2 px-3 hover:bg-primary
+                p-2 px-3 hover:bg-[#2929FF]
                  hover:text-white
-                 ${selectedTime == item.time && "bg-primary text-white"}`}
+                 ${selectedTime == item.time && "bg-[#2929FF] text-white"}`}
                     onClick={() => setSelectedTime(item.time)}
                   >
                     {item.time}
@@ -126,6 +126,7 @@ function BookingSection({ children, business }) {
                 <Button
                   disabled={!(selectedTime && date)}
                   onClick={() => saveBooking()}
+                  className='text-white'
                 >
                   Book
                 </Button>
