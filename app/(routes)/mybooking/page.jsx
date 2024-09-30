@@ -24,7 +24,7 @@ function MyBooking() {
     const result = bookingHistory.filter((item) =>
       type == "booked"
         ? new Date(item.date) >= new Date()
-        : new Date(item.date) <= new Date()
+        : new Date(item.date) < new Date()
     );
 
     return result;

@@ -69,7 +69,7 @@ function BookingHistoryList({ bookingHistory, type }) {
             </div>
           </div>
 
-          <AlertDialog>
+          {/* <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button variant="outline" className="mt-5 w-full border-red-300 ">
                 Cancel Appointment
@@ -90,7 +90,7 @@ function BookingHistoryList({ bookingHistory, type }) {
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
-          </AlertDialog>
+          </AlertDialog> */}
         </div>
       ))}
     </div>
