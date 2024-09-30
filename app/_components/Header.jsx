@@ -14,9 +14,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useRouter } from "next/navigation";
 
 function Header() {
   const { data: session, status } = useSession();
+  const router = useRouter();
 
   useEffect(() => {
     console.log("Session data:", session);
@@ -25,7 +27,12 @@ function Header() {
 
   const handleImageError = (e) => {
     console.error("Failed to load user image:", e);
-    e.target.src = "/default-avatar.png"; // Make sure you have a default avatar image
+    e.target.src = "/default-avatar.png";
+  };
+
+  const handleSignOut = async () => {
+    const data = await signOut({ redirect: false, callbackUrl: "/" });
+    router.push(data.url);
   };
 
   return (
@@ -95,14 +102,14 @@ function Header() {
               <DropdownMenuItem>
                 <Link href={"/mybooking"}>My Booking</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => signOut()}>
+              <DropdownMenuItem onClick={handleSignOut}>
                 Logout
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         ) : (
           <Button
-            className="bg- hover:bg-gray-100 hover:text-black mr-6"
+            className="bg-white hover:bg-gray-100 hover:text-black mr-6"
             onClick={() => signIn("descope")}
           >
             Login / Sign Up
