@@ -20,7 +20,7 @@ export const authOptions = {
           id: profile.sub,
           name: profile.name,
           email: profile.email,
-          image: profile.picture,
+          icon: profile.picture,
         };
       },
     },

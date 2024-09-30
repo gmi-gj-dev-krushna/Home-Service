@@ -47,7 +47,7 @@ function CategorySideBar() {
                  ${selectedCategory==category.name&&
                   'border-primary text-primary shadow-md bg-purple-50'}
                  `}>
-                    <Image src={category.image.url}
+                    <Image src={category.icon.url}
                     alt='icon'
                     width={30}
                     height={30}/>

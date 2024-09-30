@@ -10,7 +10,7 @@ function CategoryList({ categoryList }) {
             <Link href={`/category/${category.name}`} key={category.id}>
               <div className="flex flex-col items-center justify-center gap-2 bg-purple-50 p-5 rounded-lg cursor-pointer hover:scale-110 transition-all ease-in-out">
                 <Image
-                  src={category.image.url}
+                  src={category.icon.url}
                   alt={category.name}
                   width={35}
                   height={35}

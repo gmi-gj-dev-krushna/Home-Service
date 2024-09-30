@@ -11,7 +11,7 @@ const getCategory = async () => {
       categories {
         id
         name
-        image {
+        icon {
           url
         }
       }
@@ -48,26 +48,26 @@ const getAllBusinessList = async () => {
 const getBusinessByCategory = async (category) => {
   const query =
     gql`
-  query MyQuery {
-      businessLists(where: {category: 
-          {name: "` +
+    query MyQuery {
+        businessLists(where: {category: 
+            {name: "` +
     category +
     `"}}) {
-        about
-        address
-        category {
+          about
+          address
+          category {
+            name
+          }
+          contactPerson
+          email
+          id
           name
-        }
-        contactPerson
-        email
-        id
-        name
-        images {
-          url
+          images {
+            url
+          }
         }
       }
-    }
-    `;
+      `;
   const result = await request(MASTER_URL, query);
   return result;
 };
@@ -107,30 +107,33 @@ const createNewBooking = async (
 ) => {
   const mutationQuery =
     gql`
-  mutation CreateBooking {
-    createBooking(
-      data: {bookingStatus: Booked, 
-        businessList: {connect: {id: "` +
+    mutation CreateBooking {
+      createBooking(
+        data: {
+          bookingStatus: booked
+          businessList: { connect: { id: "` +
     businessId +
-    `"}},
-         date: "` +
+    `" } }
+          date: "` +
     date +
-    `", time: "` +
+    `"
+          time: "` +
     time +
-    `", 
-         userEmail: "` +
+    `"
+          userEmail: "` +
     userEmail +
-    `",
+    `"
           userName: "` +
     userName +
-    `"}
-    ) {
-      id
+    `"
+        }
+      ) {
+        id
+      }
+      publishManyBookings(to: PUBLISHED) {
+        count
+      }
     }
-    publishManyBookings(to: PUBLISHED) {
-      count
-    }
-  }
   `;
   const result = await request(MASTER_URL, mutationQuery);
   return result;
@@ -139,17 +142,16 @@ const createNewBooking = async (
 const BusinessBookedSlot = async (businessId, date) => {
   const query =
     gql`
-  query BusinessBookedSlot {
-    bookings(where: {businessList: 
-      {id: "` +
+    query BusinessBookedSlot {
+      bookings(where: { businessList: { id: "` +
     businessId +
-    `"}, date: "` +
+    `" }, date: "` +
     date +
-    `"}) {
-      date
-      time
+    `" }) {
+        date
+        time
+      }
     }
-  }
   `;
   const result = await request(MASTER_URL, query);
   return result;
@@ -158,35 +160,39 @@ const BusinessBookedSlot = async (businessId, date) => {
 const GetUserBookingHistory = async (userEmail) => {
   const query =
     gql`
-  query GetUserBookingHistory {
-    bookings(where: {userEmail: "` +
+    query GetUserBookingHistory {
+      bookings(where: {userEmail: "` +
     userEmail +
-    `"}
-    orderBy: publishedAt_DESC) {
-      businessList {
-        name
-        images {
-          url
+    `"},orderBy: publishedAt_DESC) {
+        businessList {
+          name
+          images {
+            url
+          }
+          contactPerson
+          address
         }
-        contactPerson
-        address
+        date
+        time
+        id
       }
-      date
-      time
-      id
     }
-  }
   `;
   const result = await request(MASTER_URL, query);
   return result;
 };
 
-const deleteBooking = async (bookingId) => {
-  const mutationQuery = gql`
+const deleteBooking = async (bookingId, userName) => {
+  const mutationQuery =
+    gql`
     mutation DeleteBooking {
       updateBooking(
-        data: { userName: "RRRS" }
-        where: { id: "cltastwp36re707jzb02sgdlm" }
+        data: { userName: "` +
+    userName +
+    `" }
+        where: { id: "` +
+    bookingId +
+    `" }
       ) {
         id
       }
